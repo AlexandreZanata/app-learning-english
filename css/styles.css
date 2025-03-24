@@ -1,0 +1,262 @@
+/* Fontes Personalizadas */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Cinzel-Bold'), url(../font/cinzel_bold.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'PT Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('PT Mono'), local('PTMono-Regular'), url(../font/pt_mono.woff) format('woff');
+  }
+  
+  /* Reset e Estilos Globais */
+  html, body { 
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    font-family: Georgia, 'Nimbus Roman No9 L', 'Century Schoolbook L', serif;
+    font-size: 20px;
+    line-height: 1.45;
+    color: black;
+    background: white;
+  }
+  
+  /* Conteúdo Principal */
+  article {
+    margin: 0 auto;
+    max-width: 35em;
+    padding: 2em 1em 5em;
+    position: relative;
+    overflow-wrap: break-word;
+  }
+  
+  /* Navegação */
+  nav {
+    display: block;
+    height: 0;
+    text-align: left;
+  }
+  
+  nav a {
+    font-size: 80%;
+    color: #aaa;
+    text-decoration: none !important;
+    margin-right: 10px;
+  }
+  
+  nav button {
+    background: transparent;
+    color: #aaa;
+    border: none;
+    cursor: pointer;
+  }
+  
+  nav button.help {
+    display: none;
+  }
+  
+  /* Links Subtis */
+  a.subtlelink {
+    color: black !important;
+    text-decoration: none !important;
+  }
+  
+  /* Cabeçalhos */
+  h1, h2, h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    margin: 1rem 0;
+    letter-spacing: 2px;
+  }
+  
+  h1 {
+    font-size: 130%;
+  }
+  h2 {
+    font-size: 115%;
+  }
+  h3 {
+    font-size: 100%;
+  }
+  
+  /* Ajuste de margens e padding para textos */
+  pre.snippet, p, h2, h3 {
+    margin-right: -30px;
+    padding-right: 30px;
+  }
+  
+  @media screen and (max-width: 800px) {
+    pre.snippet, p, h2, h3 {
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+  
+  /* Links Gerais */
+  a, a:visited, a:active {
+    text-decoration: none;
+    color: #467;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Listas Ordenadas */
+  ol {
+    margin: 1em 0;
+    padding: 0;
+    counter-reset: li;
+  }
+  
+  ol li {
+    margin: 0 0 0 40px;
+    padding: 0;
+    list-style: none;
+    position: relative;
+  }
+  
+  ol li:before {
+    content: counter(li) ".";
+    counter-increment: li;
+    position: absolute;
+    width: 2em;
+    text-align: right;
+    left: -2.5em;
+    top: 1px;
+    font-size: 90%;
+  }
+  
+  ol li p {
+    margin: 0;
+  }
+  
+  .chap_num {
+    font-size: 60%;
+    color: #aaa;
+    margin-top: -0.7em;
+    display: block;
+  }
+  
+  /* Blockquote */
+  blockquote {
+    margin: 0 0 0 3em;
+    padding: 0;
+    position: relative;
+    font-size: 85%;
+  }
+  
+  blockquote p {
+    color: #333;
+  }
+  
+  blockquote:before {
+    content: '“';
+    position: absolute;
+    left: -0.5em;
+  }
+  
+  blockquote p:last-of-type:after {
+    content: '”';
+  }
+  
+  blockquote footer {
+    position: relative;
+    margin-left: 1em;
+  }
+  
+  p + footer {
+    margin-top: -0.5em;
+  }
+  
+  blockquote footer cite {
+    font-style: italic;
+  }
+  
+  blockquote footer:before {
+    content: '—';
+    position: absolute;
+    left: -1em;
+  }
+  
+  /* Figuras e Imagens */
+  figure {
+    max-width: 640px;
+    margin: 0 30px;
+  }
+  
+  figure.chapter {
+    text-align: center;
+    margin: 3em 0 2em;
+  }
+  
+  figure.chapter img {
+    max-width: 75%;
+  }
+  
+  figure.framed img {
+    border-radius: 50%;
+    border: 4px double #666;
+  }
+  
+  figure.square-framed img {
+    border-radius: 30px;
+    border: 4px double #666;
+  }
+  
+  span.keyname { 
+    font-variant: small-caps;
+  }
+  
+  @media screen and (max-width: 500px) {
+    figure {
+      margin: 0;
+    }
+  }
+  
+  figure img {
+    max-width: 100%;
+  }
+  
+  /* Detalhes */
+  details.solution { 
+    color: #156; 
+  }
+  details summary { 
+    cursor: pointer; 
+  }
+  details[open] summary { 
+    display: none; 
+  }
+  
+  /* Tabelas e Ajustes de Texto */
+  td {
+    vertical-align: top;
+  }
+  
+  td + td {
+    padding-left: 1em;
+  }
+  
+  table {
+    margin-left: 15px;
+  }
+  
+  sub, sup {
+    line-height: 1;
+  }
+  
+  sub {
+    font-size: 60%;
+  }
+  
+  sup {
+    font-size: 70%;
+  }
+  
