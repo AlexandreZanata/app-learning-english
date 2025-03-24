@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Learn English</title>
+  <style>
+    h1 {
+      font-family: 'Cinzel', Georgia, serif;
+      font-weight: 700;
+      font-size: 130%;
+      margin: 1rem 0;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .menu button {
+      font-size: 1.2em;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .menu button:hover {
+      background-color: #000000;
+    }
+
+    .menu button:active {
+      background-color: #494949;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Learn English</h1>
+    <div class="menu">
+      <button onclick="startLesson()">Reading</button>
+      <button onclick="openVocabulary()">Vocabulary</button>
+      <button onclick="startQuiz()">pronouns</button>
+    </div>
+  </div>
+
+  <script>
+    function startLesson() {
+      window.location.href = 'lesson.html';
+    }
+    function openVocabulary() {
+      window.location.href = 'vocabulary.html';
+    }
+    function startQuiz() {
+      window.location.href = 'quiz.html';
+    }
+  </script>
+</body>
+</html>

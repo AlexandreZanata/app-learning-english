@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Pronomes e Adjetivos</title>
+  <style>
+    .index-list {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+    .index-list li {
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      transition: background 0.3s;
+    }
+    .index-list li:hover {
+      background: #f9f9f9;
+    }
+    .content {
+      display: none;
+      margin: 1em 0;
+      margin-top: 40px;
+    }
+    .content.active {
+      display: block;
+    }
+    #backButton {
+      margin-right: 10px;
+      display: none;
+    }
+    nav {
+      margin-top: -20px;
+    }
+    #mainTitle {
+      margin-top: 40px;
+    }
+    #translationBox {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000000;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: sans-serif;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .voltar {
+      color: #ff2222;
+    }
+    .home {
+      color: #ccc;
+    }
+
+  </style>
+</head>
+<body>
+  <article>
+    <nav>
+      <a class="voltar" id="backButton">Voltar</a>
+      <a class="home" href="index.html">Home</a>
+    </nav>
+    <h1 id="mainTitle">Pronomes e Adjetivos</h1>
+    <ul class="index-list" id="indexList">
+      <li data-target="pronome1">I</li>
+      <li data-target="pronome2">You</li>
+      <li data-target="pronome3">He</li>
+      <li data-target="pronome4">She</li>
+      <li data-target="pronome5">It</li>
+      <li data-target="pronome6">We</li>
+      <li data-target="pronome7">They</li>
+      <li data-target="adjetivo1">Happy</li>
+      <li data-target="adjetivo2">Sad</li>
+      <li data-target="adjetivo3">Big</li>
+      <li data-target="adjetivo4">Small</li>
+      <li data-target="adjetivo5">Beautiful</li>
+      <li data-target="adjetivo6">Strong</li>
+    </ul>
+
+    <!-- Conteúdos relacionados -->
+    <div id="pronome1" class="content">
+      <p><strong>Palavra:</strong> I</p>
+      <p><strong>Contexto:</strong> Usado pelo falante para se referir a si mesmo.</p>
+      <p><strong>Exemplo:</strong> I am learning English.</p>
+    </div>
+
+    <div id="pronome2" class="content">
+      <p><strong>Palavra:</strong> You</p>
+      <p><strong>Contexto:</strong> Usado para se referir à pessoa com quem o falante está falando.</p>
+      <p><strong>Exemplo:</strong> You are my friend.</p>
+    </div>
+
+    <div id="pronome3" class="content">
+      <p><strong>Palavra:</strong> He</p>
+      <p><strong>Contexto:</strong> Usado para se referir a uma pessoa do sexo masculino.</p>
+      <p><strong>Exemplo:</strong> He is very smart.</p>
+    </div>
+
+    <div id="pronome4" class="content">
+      <p><strong>Palavra:</strong> She</p>
+      <p><strong>Contexto:</strong> Usado para se referir a uma pessoa do sexo feminino.</p>
+      <p><strong>Exemplo:</strong> She loves music.</p>
+    </div>
+
+    <div id="pronome5" class="content">
+      <p><strong>Palavra:</strong> It</p>
+      <p><strong>Contexto:</strong> Usado para se referir a um objeto, animal ou ideia.</p>
+      <p><strong>Exemplo:</strong> It is raining.</p>
+    </div>
+
+    <div id="pronome6" class="content">
+      <p><strong>Palavra:</strong> We</p>
+      <p><strong>Contexto:</strong> Usado pelo falante para se referir a um grupo incluindo a si mesmo.</p>
+      <p><strong>Exemplo:</strong> We are going to the park.</p>
+    </div>
+
+    <div id="pronome7" class="content">
+      <p><strong>Palavra:</strong> They</p>
+      <p><strong>Contexto:</strong> Usado para se referir a um grupo de pessoas ou coisas.</p>
+      <p><strong>Exemplo:</strong> They are playing soccer.</p>
+    </div>
+
+    <div id="adjetivo1" class="content">
+      <p><strong>Palavra:</strong> Happy</p>
+      <p><strong>Contexto:</strong> Descreve um sentimento de alegria.</p>
+      <p><strong>Exemplo:</strong> I am happy today.</p>
+    </div>
+
+    <div id="adjetivo2" class="content">
+      <p><strong>Palavra:</strong> Sad</p>
+      <p><strong>Contexto:</strong> Descreve um sentimento de tristeza.</p>
+      <p><strong>Exemplo:</strong> She feels sad about the news.</p>
+    </div>
+
+    <div id="adjetivo3" class="content">
+      <p><strong>Palavra:</strong> Big</p>
+      <p><strong>Contexto:</strong> Descreve algo de grande tamanho.</p>
+      <p><strong>Exemplo:</strong> The elephant is big.</p>
+    </div>
+
+    <div id="adjetivo4" class="content">
+      <p><strong>Palavra:</strong> Small</p>
+      <p><strong>Contexto:</strong> Descreve algo de pequeno tamanho.</p>
+      <p><strong>Exemplo:</strong> It is a small dog.</p>
+    </div>
+
+    <div id="adjetivo5" class="content">
+      <p><strong>Palavra:</strong> Beautiful</p>
+      <p><strong>Contexto:</strong> Descreve algo que é bonito ou agradável aos olhos.</p>
+      <p><strong>Exemplo:</strong> You are beautiful.</p>
+    </div>
+
+    <div id="adjetivo6" class="content">
+      <p><strong>Palavra:</strong> Strong</p>
+      <p><strong>Contexto:</strong> Descreve força física ou mental.</p>
+      <p><strong>Exemplo:</strong> He is very strong.</p>
+    </div>
+  </article>
+
+  <div id="translationBox"></div>
+
+  <script>
+    // Elementos da página
+    const indexItems = document.querySelectorAll('.index-list li');
+    const indexList = document.getElementById('indexList');
+    const mainTitle = document.getElementById('mainTitle');
+    const backButton = document.getElementById('backButton');
+
+    // Função de navegação
+    indexItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('data-target');
+        const contentEl = document.getElementById(targetId);
+        
+        indexList.style.display = 'none';
+        mainTitle.style.display = 'none';
+        
+        document.querySelectorAll('.content').forEach(el => {
+          el.classList.remove('active');
+        });
+        
+        contentEl.classList.add('active');
+        backButton.style.display = 'inline-block';
+      });
+    });
+
+    // Voltar ao menu
+    backButton.addEventListener('click', () => {
+      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+      indexList.style.display = 'block';
+      mainTitle.style.display = 'block';
+      backButton.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

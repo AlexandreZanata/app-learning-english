@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Vocabulary</title>
+  <style>
+      .index-list {
+          list-style: none;
+          padding: 0;
+          margin: 1em 0;
+      }
+      .index-list li {
+          cursor: pointer;
+          padding: 10px;
+          border-bottom: 1px solid #ccc;
+          transition: background 0.3s;
+      }
+      .index-list li:hover {
+          background: #f9f9f9;
+      }
+      .content {
+          display: none;
+          margin: 1em 0;
+          margin-top: 40px;
+      }
+      .content.active {
+          display: block;
+      }
+      #backButton {
+          margin-right: 10px;
+          display: none;
+      }
+      nav {
+          margin-top: -20px;
+      }
+      #mainTitle {
+          margin-top: 40px;
+      }
+      #translationBox {
+          display: none;
+          position: fixed;
+          bottom: 100px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #000000;
+          padding: 10px 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-family: sans-serif;
+          color: white;
+          white-space: nowrap;
+      }
+      .voltar {
+          color: #ff2222;
+      }
+      .home {
+          color: #ccc;
+      }
+  </style>
+</head>
+<body>
+  <article>
+      <nav>
+          <a class="voltar" id="backButton">Voltar</a>
+          <a class="home" href="index.html">Home</a>
+      </nav>
+      <h1 id="mainTitle">Vocabulary</h1>
+      <ul class="index-list" id="indexList">
+          <li onclick="sortearVocabulario()">Vocabulary</li>
+      </ul>
+
+      <div id="vocabulary-section" class="content"></div>
+  </article>
+
+  <script>
+   const vocabularios = {
+  "Abstract Concepts": [
+    {
+      word: "Serendipity",
+      context: "The occurrence of happy or beneficial events by chance.",
+      usage: "It was pure serendipity that we met at the bookstore.",
+      translation: "Foi pura sorte que nos encontramos na livraria."
+    },
+    {
+      word: "Epiphany",
+      context: "A moment of sudden and great revelation or realization.",
+      usage: "She had an epiphany about her career path.",
+      translation: "Ela teve uma epifania sobre seu caminho de carreira."
+    },
+    {
+      word: "Ambiguity",
+      context: "The quality of being open to more than one interpretation.",
+      usage: "The ambiguity of the instructions caused confusion.",
+      translation: "A ambiguidade das instruções causou confusão."
+    },
+    {
+      word: "Paradox",
+      context: "A statement or situation that contradicts itself.",
+      usage: "The paradox of choice can lead to indecision.",
+      translation: "O paradoxo da escolha pode levar à indecisão."
+    },
+    {
+      word: "Irony",
+      context: "The expression of meaning through the use of language that signifies the opposite.",
+      usage: "It was ironic that he won the lottery after losing his job.",
+      translation: "Foi irônico que ele ganhou na loteria depois de perder o emprego."
+    }
+  ],
+  "Emotions": [
+    {
+      word: "Melancholy",
+      context: "A feeling of pensive sadness, typically with no obvious cause.",
+      usage: "She felt a sense of melancholy as she looked at old photographs.",
+      translation: "Ela sentiu uma sensação de melancolia ao olhar fotos antigas."
+    },
+    {
+      word: "Euphoria",
+      context: "A state of intense excitement and happiness.",
+      usage: "He felt a rush of euphoria after winning the race.",
+      translation: "Ele sentiu uma onda de euforia depois de ganhar a corrida."
+    },
+    {
+      word: "Apathy",
+      context: "A lack of interest, enthusiasm, or concern.",
+      usage: "His apathy towards the project was evident.",
+      translation: "Sua apatia em relação ao projeto era evidente."
+    },
+    {
+      word: "Nostalgia",
+      context: "A sentimental longing or wistful affection for the past.",
+      usage: "She felt nostalgia for her childhood summers.",
+      translation: "Ela sentiu nostalgia dos verões de sua infância."
+    },
+    {
+      word: "Exasperation",
+      context: "A feeling of intense irritation or annoyance.",
+      usage: "His exasperation grew with each passing minute.",
+      translation: "Sua exasperação crescia a cada minuto que passava."
+    }
+  ],
+  "Literary Terms": [
+    {
+      word: "Allegory",
+      context: "A story, poem, or picture that can be interpreted to represent a hidden meaning.",
+      usage: "The novel is an allegory for the struggle against oppression.",
+      translation: "O romance é uma alegoria da luta contra a opressão."
+    },
+    {
+      word: "Satire",
+      context: "The use of humor, irony, or exaggeration to criticize and expose social vices.",
+      usage: "The play is a satire of political corruption.",
+      translation: "A peça é uma sátira da corrupção política."
+    },
+    {
+      word: "Metaphor",
+      context: "A figure of speech that describes an object or action by saying it is something else.",
+      usage: "Life is a journey, not a destination.",
+      translation: "A vida é uma jornada, não um destino."
+    },
+    {
+      word: "Oxymoron",
+      context: "A figure of speech that combines contradictory terms.",
+      usage: "The phrase 'jumbo shrimp' is an oxymoron.",
+      translation: "A frase 'camarão gigante' é um oximoro."
+    },
+    {
+      word: "Personification",
+      context: "A figure of speech in which a thing or abstraction is represented as a person.",
+      usage: "The wind whispered through the trees.",
+      translation: "O vento sussurrou através das árvores."
+    }
+  ],
+  "Science and Technology": [
+    {
+      word: "Quantum",
+      context: "The smallest amount of a physical quantity that can exist independently.",
+      usage: "Quantum physics deals with phenomena on a very small scale.",
+      translation: "A física quântica lida com fenômenos em uma escala muito pequena."
+    },
+    {
+      word: "Algorithm",
+      context: "A process or set of rules to be followed in calculations or other problem-solving operations.",
+      usage: "The algorithm efficiently sorted the data.",
+      translation: "O algoritmo classificou os dados de forma eficiente."
+    },
+    {
+      word: "Paradigm",
+      context: "A typical example or pattern of something; a model.",
+      usage: "The new paradigm shifted the focus to renewable energy.",
+      translation: "O novo paradigma mudou o foco para a energia renovável."
+    },
+    {
+      word: "Nanotechnology",
+      context: "The branch of technology that deals with dimensions and tolerances of less than 100 nanometers.",
+      usage: "Nanotechnology has applications in medicine and materials science.",
+      translation: "A nanotecnologia tem aplicações na medicina e na ciência dos materiais."
+    },
+    {
+      word: "Cryptography",
+      context: "The practice and study of techniques for secure communication in the presence of adversaries.",
+      usage: "Cryptography is used to protect sensitive information.",
+      translation: "A criptografia é usada para proteger informações sensíveis."
+    }
+  ],
+  "Philosophy": [
+    {
+      word: "Existentialism",
+      context: "A philosophical theory emphasizing the existence of the individual as a free and responsible agent.",
+      usage: "Existentialism focuses on the meaning of life and personal freedom.",
+      translation: "O existencialismo se concentra no significado da vida e na liberdade pessoal."
+    },
+    {
+      word: "Empiricism",
+      context: "The theory that knowledge originates in experience.",
+      usage: "Empiricism emphasizes the role of evidence and observation.",
+      translation: "O empirismo enfatiza o papel das evidências e da observação."
+    },
+    {
+      word: "Utilitarianism",
+      context: "The belief that the best moral action is the one that maximizes utility.",
+      usage: "Utilitarianism aims to achieve the greatest good for the greatest number.",
+      translation: "O utilitarismo visa alcançar o maior bem para o maior número."
+    },
+    {
+      word: "Stoicism",
+      context: "An ancient Greek philosophy emphasizing the importance of living in accordance with nature.",
+      usage: "Stoicism teaches the development of self-control and fortitude.",
+      translation: "O estoicismo ensina o desenvolvimento do autocontrole e da fortitude."
+    },
+    {
+      word: "Nihilism",
+      context: "The belief that life is without objective meaning, purpose, or intrinsic value.",
+      usage: "Nihilism rejects all religious and moral principles.",
+      translation: "O niilismo rejeita todos os princípios religiosos e morais."
+    }
+  ],
+
+  "Economics": [
+    {
+      word: "Fiscal Policy",
+      context: "Government policy relating to setting tax rates and spending levels.",
+      usage: "The government implemented a new fiscal policy to stimulate the economy.",
+      translation: "O governo implementou uma nova política fiscal para estimular a economia."
+    },
+    {
+      word: "Inflation",
+      context: "A general increase in prices and fall in the purchasing value of money.",
+      usage: "High inflation rates have affected consumer spending.",
+      translation: "Altas taxas de inflação afetaram os gastos dos consumidores."
+    },
+    {
+      word: "Recession",
+      context: "A period of temporary economic decline identified by a fall in GDP in two successive quarters.",
+      usage: "The country is facing a recession due to decreased economic activity.",
+      translation: "O país está enfrentando uma recessão devido à diminuição da atividade econômica."
+    },
+    {
+      word: "GDP",
+      context: "The total value of goods produced and services provided in a country during one year.",
+      usage: "The GDP growth rate has slowed down this year.",
+      translation: "A taxa de crescimento do PIB diminuiu este ano."
+    },
+    {
+      word: "Monetary Policy",
+      context: "The actions of a central bank or government that determine the size and rate of growth of the money supply.",
+      usage: "The central bank adjusted its monetary policy to control inflation.",
+      translation: "O banco central ajustou sua política monetária para controlar a inflação."
+    }
+  ],
+  "Politics": [
+    {
+      word: "Demagogue",
+      context: "A political leader who seeks support by appealing to popular desires and prejudices.",
+      usage: "The demagogue's speeches were filled with empty promises.",
+      translation: "Os discursos do demagogo estavam cheios de promessas vazias."
+    },
+    {
+      word: "Bipartisan",
+      context: "Relating to or involving members of two political parties.",
+      usage: "The bipartisan agreement was a rare moment of unity in Congress.",
+      translation: "O acordo bipartidário foi um raro momento de unidade no Congresso."
+    },
+    {
+      word: "Lobbyist",
+      context: "A person who takes part in an organized attempt to influence legislators.",
+      usage: "The lobbyist advocated for stricter environmental regulations.",
+      translation: "O lobista defendeu regulamentações ambientais mais rigorosas."
+    },
+    {
+      word: "Filibuster",
+      context: "The use of obstructionist tactics, especially prolonged speechmaking, to delay legislative action.",
+      usage: "The senator used a filibuster to block the vote on the bill.",
+      translation: "O senador usou um filibuste para bloquear a votação do projeto de lei."
+    },
+    {
+      word: "Constituency",
+      context: "A group of voters in a specified area who elect a representative.",
+      usage: "The politician visited his constituency to understand their needs.",
+      translation: "O político visitou seu eleitorado para entender suas necessidades."
+    }
+  ],
+  "Art and Culture": [
+    {
+      word: "Avant-Garde",
+      context: "New and experimental ideas and methods in art, music, or literature.",
+      usage: "The avant-garde movement challenged traditional artistic norms.",
+      translation: "O movimento avant-garde desafiou as normas artísticas tradicionais."
+    },
+    {
+      word: "Catharsis",
+      context: "The process of releasing and providing relief from strong or repressed emotions.",
+      usage: "The play provided a catharsis for the audience's pent-up emotions.",
+      translation: "A peça proporcionou uma catarse para as emoções reprimidas do público."
+    },
+    {
+      word: "Motif",
+      context: "A distinctive feature or dominant idea in an artistic or literary composition.",
+      usage: "The motif of light versus darkness is prevalent in the novel.",
+      translation: "O motivo da luz contra a escuridão é predominante no romance."
+    },
+    {
+      word: "Patron",
+      context: "A person who supports with money, gifts, efforts, or endorsement an artist, writer, museum, cause, or institution.",
+      usage: "The patron's support allowed the artist to focus on her work.",
+      translation: "O apoio do patrono permitiu que a artista se concentrasse em seu trabalho."
+    },
+    {
+      word: "Zeitgeist",
+      context: "The defining spirit or mood of a particular period of history as shown by the ideas and beliefs of the time.",
+      usage: "The zeitgeist of the 1960s was marked by social and political change.",
+      translation: "O espírito da época dos anos 1960 foi marcado por mudanças sociais e políticas."
+    }
+  ],
+  "Psychology": [
+    {
+      word: "Cognitive Dissonance",
+      context: "The state of having inconsistent thoughts, beliefs, or attitudes, especially relating to behavioral decisions and attitude change.",
+      usage: "He experienced cognitive dissonance when his actions conflicted with his beliefs.",
+      translation: "Ele experimentou dissonância cognitiva quando suas ações conflitaram com suas crenças."
+    },
+    {
+      word: "Introvert",
+      context: "A person predominantly concerned with their own thoughts and feelings rather than with external things.",
+      usage: "As an introvert, she preferred quiet environments to recharge.",
+      translation: "Como introvertida, ela preferia ambientes tranquilos para recarregar as energias."
+    },
+    {
+      word: "Neuroplasticity",
+      context: "The brain's ability to reorganize itself by forming new neural connections throughout life.",
+      usage: "Neuroplasticity allows the brain to adapt and learn new skills.",
+      translation: "A neuroplasticidade permite que o cérebro se adapte e aprenda novas habilidades."
+    },
+    {
+      word: "Subconscious",
+      context: "The part of the mind that is not currently in focal awareness, but can be retrieved.",
+      usage: "His subconscious mind was processing the day's events.",
+      translation: "Sua mente subconsciente estava processando os eventos do dia."
+    },
+    {
+      word: "Empathy",
+      context: "The ability to understand and share the feelings of another.",
+      usage: "Her empathy allowed her to connect with people on a deeper level.",
+      translation: "Sua empatia permitiu que ela se conectasse com as pessoas em um nível mais profundo."
+    }
+  ],
+  "Environment": [
+    {
+      word: "Biodiversity",
+      context: "The variety of plant and animal life in the world or in a particular habitat.",
+      usage: "Preserving biodiversity is crucial for ecosystem health.",
+      translation: "Preservar a biodiversidade é crucial para a saúde do ecossistema."
+    },
+    {
+      word: "Sustainability",
+      context: "The property of being environmentally sustainable, avoiding depletion of natural resources.",
+      usage: "The company implemented sustainability practices to reduce its carbon footprint.",
+      translation: "A empresa implementou práticas de sustentabilidade para reduzir sua pegada de carbono."
+    },
+    {
+      word: "Ecosystem",
+      context: "A biological community of interacting organisms and their physical environment.",
+      usage: "The ecosystem of the rainforest is incredibly diverse.",
+      translation: "O ecossistema da floresta tropical é incrivelmente diverso."
+    },
+    {
+      word: "Conservation",
+      context: "The preservation, protection, or restoration of the natural environment, ecosystems, vegetation, and wildlife.",
+      usage: "Conservation efforts are vital for protecting endangered species.",
+      translation: "Os esforços de conservação são vitais para proteger espécies ameaçadas."
+    },
+    {
+      word: "Renewable Energy",
+      context: "Energy from a source that is not depleted when used, such as wind or solar power.",
+      usage: "Investing in renewable energy is essential for a sustainable future.",
+      translation: "Investir em energia renovável é essencial para um futuro sustentável."
+    }
+  ],
+
+  "Technology": [
+    {
+      word: "Blockchain",
+      context: "A decentralized, distributed ledger technology that records the provenance of a digital asset.",
+      usage: "Blockchain technology is used to secure cryptocurrency transactions.",
+      translation: "A tecnologia blockchain é usada para proteger transações de criptomoedas."
+    },
+    {
+      word: "Algorithm",
+      context: "A process or set of rules to be followed in calculations or other problem-solving operations.",
+      usage: "The algorithm efficiently sorted the data.",
+      translation: "O algoritmo classificou os dados de forma eficiente."
+    },
+    {
+      word: "Artificial Intelligence",
+      context: "The simulation of human intelligence processes by machines, especially computer systems.",
+      usage: "Artificial intelligence is used in various applications, from search algorithms to autonomous vehicles.",
+      translation: "A inteligência artificial é usada em diversas aplicações, desde algoritmos de busca até veículos autônomos."
+    },
+    {
+      word: "Cybersecurity",
+      context: "The practice of protecting systems, networks, and programs from digital attacks.",
+      usage: "Cybersecurity measures are crucial to protect sensitive data.",
+      translation: "Medidas de cibersegurança são cruciais para proteger dados sensíveis."
+    },
+    {
+      word: "Quantum Computing",
+      context: "A type of computation that uses quantum-mechanical phenomena, such as superposition and entanglement.",
+      usage: "Quantum computing has the potential to solve complex problems much more efficiently than classical computers.",
+      translation: "A computação quântica tem o potencial de resolver problemas complexos de maneira muito mais eficiente do que os computadores clássicos."
+    }
+  ],
+  "Health and Medicine": [
+    {
+      word: "Epidemiology",
+      context: "The study and analysis of the distribution and determinants of health and disease conditions in defined populations.",
+      usage: "Epidemiology helps in understanding the patterns and causes of diseases.",
+      translation: "A epidemiologia ajuda a entender os padrões e causas das doenças."
+    },
+    {
+      word: "Placebo",
+      context: "A substance or treatment with no active therapeutic effect, used as a control in testing new drugs.",
+      usage: "The placebo effect can influence a patient's perception of their condition.",
+      translation: "O efeito placebo pode influenciar a percepção do paciente sobre sua condição."
+    },
+    {
+      word: "Chronic",
+      context: "Persisting for a long time or constantly recurring.",
+      usage: "Chronic diseases require ongoing management and treatment.",
+      translation: "Doenças crônicas exigem manejo e tratamento contínuos."
+    },
+    {
+      word: "Holistic",
+      context: "Characterized by comprehension of the parts of something as intimately interconnected and explicable only by reference to the whole.",
+      usage: "Holistic medicine considers the whole person, including physical, emotional, and spiritual health.",
+      translation: "A medicina holística considera a pessoa como um todo, incluindo a saúde física, emocional e espiritual."
+    },
+    {
+      word: "Palliative",
+      context: "Relating to palliative care, which focuses on relieving and preventing the suffering of patients.",
+      usage: "Palliative care aims to improve the quality of life for patients with serious illnesses.",
+      translation: "O cuidado paliativo visa melhorar a qualidade de vida dos pacientes com doenças graves."
+    }
+  ],
+  "Social Sciences": [
+    {
+      word: "Paradigm Shift",
+      context: "A fundamental change in approach or underlying assumptions.",
+      usage: "The discovery led to a paradigm shift in the scientific community.",
+      translation: "A descoberta levou a uma mudança de paradigma na comunidade científica."
+    },
+    {
+      word: "Hegemony",
+      context: "The political, economic, or military predominance or control of one state over others.",
+      usage: "The hegemony of the empire lasted for centuries.",
+      translation: "A hegemonia do império durou séculos."
+    },
+    {
+      word: "Anomie",
+      context: "A condition in which society provides little moral guidance to individuals.",
+      usage: "Social anomie can lead to feelings of alienation and normlessness.",
+      translation: "A anomia social pode levar a sentimentos de alienação e ausência de normas."
+    },
+    {
+      word: "Ethnography",
+      context: "The scientific description of the customs of individual peoples and cultures.",
+      usage: "Ethnographic research involves immersing oneself in a culture to understand it deeply.",
+      translation: "A pesquisa etnográfica envolve imersão em uma cultura para entendê-la profundamente."
+    },
+    {
+      word: "Social Mobility",
+      context: "The movement of individuals or groups within the social stratification system.",
+      usage: "Education is a key factor in promoting social mobility.",
+      translation: "A educação é um fator-chave na promoção da mobilidade social."
+    }
+  ],
+  "Business": [
+    {
+      word: "Disruptive Innovation",
+      context: "An innovation that creates a new market and value network and eventually disrupts an existing market.",
+      usage: "The company's disruptive innovation changed the industry landscape.",
+      translation: "A inovação disruptiva da empresa mudou o cenário do setor."
+    },
+    {
+      word: "Leverage",
+      context: "The use of borrowed capital for an investment, expecting the profits made to be greater than the interest payable.",
+      usage: "The company used financial leverage to expand its operations.",
+      translation: "A empresa usou alavancagem financeira para expandir suas operações."
+    },
+    {
+      word: "Synergy",
+      context: "The interaction or cooperation of two or more organizations, substances, or other agents to produce a combined effect greater than the sum of their separate effects.",
+      usage: "The merger created synergy between the two companies, leading to increased efficiency.",
+      translation: "A fusão criou sinergia entre as duas empresas, resultando em maior eficiência."
+    },
+    {
+      word: "Scalability",
+      context: "The capability of a system, network, or process to handle a growing amount of work, or its potential to be enlarged to accommodate that growth.",
+      usage: "The startup focused on scalability to meet increasing demand.",
+      translation: "A startup focou na escalabilidade para atender à demanda crescente."
+    },
+    {
+      word: "Venture Capital",
+      context: "A type of private equity, a form of financing that is provided to early-stage, high-growth-potential startups.",
+      usage: "Venture capital investments can fuel the growth of innovative companies.",
+      translation: "Investimentos de capital de risco podem impulsionar o crescimento de empresas inovadoras."
+    }
+  ],
+  "Linguistics": [
+    {
+      word: "Semantics",
+      context: "The branch of linguistics and logic concerned with meaning.",
+      usage: "Semantics deals with the study of meaning in language.",
+      translation: "A semântica lida com o estudo do significado na linguagem."
+    },
+    {
+      word: "Syntax",
+      context: "The set of rules that govern the structure of sentences in a language.",
+      usage: "Understanding syntax is crucial for constructing grammatically correct sentences.",
+      translation: "Entender a sintaxe é crucial para construir frases gramaticalmente corretas."
+    },
+    {
+      word: "Morphology",
+      context: "The study of the structure of words and their formation.",
+      usage: "Morphology examines how words are formed and their relationship to other words.",
+      translation: "A morfologia examina como as palavras são formadas e sua relação com outras palavras."
+    },
+    {
+      word: "Pragmatics",
+      context: "The branch of linguistics dealing with language use in social contexts and the ways context contributes to meaning.",
+      usage: "Pragmatics focuses on how context influences the interpretation of language.",
+      translation: "A pragmática se concentra em como o contexto influencia a interpretação da linguagem."
+    },
+    {
+      word: "Phonology",
+      context: "The branch of linguistics that deals with the sound systems of languages.",
+      usage: "Phonology studies the patterns of sounds in a language.",
+      translation: "A fonologia estuda os padrões de sons em uma língua."
+    }
+  ],
+
+  "Legal": [
+    {
+      word: "Jurisprudence",
+      context: "The theory or philosophy of law.",
+      usage: "Jurisprudence examines the principles behind legal systems.",
+      translation: "A jurisprudência examina os princípios por trás dos sistemas legais."
+    },
+    {
+      word: "Precedent",
+      context: "A previous case or legal decision that establishes a principle or rule.",
+      usage: "The judge followed the precedent set by earlier cases.",
+      translation: "O juiz seguiu o precedente estabelecido por casos anteriores."
+    },
+    {
+      word: "Adjudicate",
+      context: "To make a formal judgment or decision about a problem or disputed matter.",
+      usage: "The court will adjudicate the dispute between the two parties.",
+      translation: "O tribunal irá julgar a disputa entre as duas partes."
+    },
+    {
+      word: "Statute",
+      context: "A written law passed by a legislative body.",
+      usage: "The statute outlines the penalties for violating the regulations.",
+      translation: "O estatuto detalha as penalidades por violar os regulamentos."
+    },
+    {
+      word: "Jurisdiction",
+      context: "The official power to make legal decisions and judgments.",
+      usage: "The court has jurisdiction over cases involving federal laws.",
+      translation: "O tribunal tem jurisdição sobre casos que envolvem leis federais."
+    }
+  ],
+  "Architecture": [
+    {
+      word: "Facade",
+      context: "The front of a building, especially one with decorative features.",
+      usage: "The building's facade features intricate carvings and columns.",
+      translation: "A fachada do edifício apresenta entalhes e colunas intrincados."
+    },
+    {
+      word: "Blueprint",
+      context: "A design plan or technical drawing.",
+      usage: "The architect reviewed the blueprint before construction began.",
+      translation: "O arquiteto revisou a planta antes do início da construção."
+    },
+    {
+      word: "Symmetry",
+      context: "The quality of being made up of exactly similar parts facing each other or around an axis.",
+      usage: "The symmetry of the building's design creates a sense of harmony.",
+      translation: "A simetria do design do edifício cria um senso de harmonia."
+    },
+    {
+      word: "Vernacular",
+      context: "The language or dialect spoken by the ordinary people of a country or region.",
+      usage: "The architect incorporated vernacular elements into the design.",
+      translation: "O arquiteto incorporou elementos vernáculos no design."
+    },
+    {
+      word: "Aesthetic",
+      context: "Relating to the appreciation of beauty or good taste.",
+      usage: "The aesthetic appeal of the building attracts many visitors.",
+      translation: "O apelo estético do edifício atrai muitos visitantes."
+    }
+  ],
+  "Astronomy": [
+    {
+      word: "Nebula",
+      context: "A cloud of gas and dust in outer space, visible in the night sky either as an indistinct bright patch or as a dark silhouette against other luminous matter.",
+      usage: "The nebula is a stellar nursery where new stars are born.",
+      translation: "A nebulosa é um berçário estelar onde nascem novas estrelas."
+    },
+    {
+      word: "Supernova",
+      context: "An explosion of a star, caused by the sudden onset of gravitational collapse.",
+      usage: "A supernova can outshine an entire galaxy for a brief period.",
+      translation: "Uma supernova pode ofuscar uma galáxia inteira por um breve período."
+    },
+    {
+      word: "Celestial",
+      context: "Relating to the sky or outer space.",
+      usage: "The celestial bodies aligned perfectly for the rare event.",
+      translation: "Os corpos celestes se alinharam perfeitamente para o evento raro."
+    },
+    {
+      word: "Constellation",
+      context: "A group of stars forming a recognizable pattern.",
+      usage: "Orion is one of the most recognizable constellations in the night sky.",
+      translation: "Órion é uma das constelações mais reconhecíveis no céu noturno."
+    },
+    {
+      word: "Galaxy",
+      context: "A system of millions or billions of stars, together with gas and dust, held together by gravitational attraction.",
+      usage: "The Milky Way is a spiral galaxy containing our solar system.",
+      translation: "A Via Láctea é uma galáxia espiral que contém nosso sistema solar."
+    }
+  ],
+  "Geography": [
+    {
+      word: "Tectonic",
+      context: "Relating to the structure of the Earth's crust and the large-scale processes that take place within it.",
+      usage: "Tectonic activity can cause earthquakes and volcanic eruptions.",
+      translation: "A atividade tectônica pode causar terremotos e erupções vulcânicas."
+    },
+    {
+      word: "Topography",
+      context: "The arrangement of the natural and artificial physical features of an area.",
+      usage: "The topography of the region includes mountains and valleys.",
+      translation: "A topografia da região inclui montanhas e vales."
+    },
+    {
+      word: "Hydrology",
+      context: "The scientific study of the properties, distribution, and effects of water on the earth's surface.",
+      usage: "Hydrology is crucial for understanding water cycles and management.",
+      translation: "A hidrologia é crucial para entender os ciclos e o gerenciamento da água."
+    },
+    {
+      word: "Biosphere",
+      context: "The regions of the Earth's surface and atmosphere that support life.",
+      usage: "The biosphere includes all ecosystems on Earth.",
+      translation: "A biosfera inclui todos os ecossistemas da Terra."
+    },
+    {
+      word: "Geomorphology",
+      context: "The scientific study of landforms and the processes that shape them.",
+      usage: "Geomorphology helps us understand the formation of landscapes.",
+      translation: "A geomorfologia nos ajuda a entender a formação das paisagens."
+    }
+  ],
+  "Mathematics": [
+    {
+      word: "Algorithm",
+      context: "A process or set of rules to be followed in calculations or other problem-solving operations.",
+      usage: "The algorithm efficiently sorted the data.",
+      translation: "O algoritmo classificou os dados de forma eficiente."
+    },
+    {
+      word: "Fractal",
+      context: "A curve or geometric figure, each part of which has the same statistical character as the whole.",
+      usage: "Fractals exhibit similar patterns at increasingly small scales.",
+      translation: "Os fractais exibem padrões semelhantes em escalas cada vez menores."
+    },
+    {
+      word: "Calculus",
+      context: "The branch of mathematics that deals with rates of change and accumulation of quantities.",
+      usage: "Calculus is fundamental in physics and engineering.",
+      translation: "O cálculo é fundamental na física e na engenharia."
+    },
+    {
+      word: "Theorem",
+      context: "A statement that can be proven true using logical reasoning within a mathematical system.",
+      usage: "The Pythagorean theorem is a fundamental principle in geometry.",
+      translation: "O teorema de Pitágoras é um princípio fundamental na geometria."
+    },
+    {
+      word: "Integral",
+      context: "A central or essential part of something, or a mathematical object that extends the concept of a sum to functions.",
+      usage: "The integral of a function represents the area under its curve.",
+      translation: "A integral de uma função representa a área sob sua curva."
+    }
+  ]
+};
+
+
+
+    
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+  
+    function flattenVocabularies() {
+      let list = [];
+      for (let tema in vocabularios) {
+        vocabularios[tema].forEach(item => {
+          list.push({ ...item, theme: tema });
+        });
+      }
+      return list;
+    }
+
+ 
+    let vocabQueue = shuffle(flattenVocabularies());
+
+    function sortearVocabulario() {
+
+      if (vocabQueue.length === 0) {
+        vocabQueue = shuffle(flattenVocabularies());
+      }
+
+      const vocabulario = vocabQueue.pop();
+      const vocabularySection = document.getElementById('vocabulary-section');
+      vocabularySection.innerHTML = `
+        <h2>Theme: ${vocabulario.theme}</h2>
+        <p><strong>Word:</strong> ${vocabulario.word}</p>
+        <p><strong>Context:</strong> ${vocabulario.context}</p>
+        <p><strong>Usage:</strong> ${vocabulario.usage}</p>
+        <p><strong>Translation:</strong> ${vocabulario.translation}</p>
+      `;
+      vocabularySection.classList.add('active');
+      document.getElementById('backButton').style.display = 'inline-block';
+    }
+
+    document.getElementById('backButton').addEventListener('click', () => {
+      document.getElementById('vocabulary-section').classList.remove('active');
+      document.getElementById('backButton').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

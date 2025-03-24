@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Leitura de textos</title>
+  <style>
+    .index-list {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+    .index-list li {
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      transition: background 0.3s;
+    }
+    .index-list li:hover {
+      background: #f9f9f9;
+    }
+    .content {
+      display: none;
+      margin: 1em 0;
+      margin-top: 40px;
+    }
+    .content.active {
+      display: block;
+    }
+    #backButton {
+      margin-right: 10px;
+      display: none;
+    }
+    nav {
+      margin-top: -20px;
+      
+    }
+    #mainTitle {
+      margin-top: 40px;
+    }
+    #translationBox {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000000;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: sans-serif;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .voltar {
+      color: #ff2222;
+    }
+    .home {
+      color: #ccc;
+    }
+  
+  </style>
+</head>
+<body>
+  <article>
+    <nav>
+      <a class="voltar" id="backButton">Voltar</a>
+      <a class="home" href="index.html">Home</a>
+    </nav>
+    <h1 id="mainTitle">Leitura com tradução</h1>
+    <ul class="index-list" id="indexList">
+      <li data-target="texto1">Cosmic Echoes</li>
+      <li data-target="texto2">Quantum Gods</li>
+      <li data-target="texto3">Stellar Myths</li>
+      <li data-target="texto4">Norse Stars</li>
+      <li data-target="texto5">Amazonian Void</li>
+    </ul>
+  
+    <!-- Conteúdos relacionados -->
+    <div id="texto1" class="content">
+      <p>
+        In the distant future, humanity discovers ancient artifacts scattered across the cosmos, each emitting a mysterious signal. Scientists decipher the signals as messages from an advanced civilization that vanished eons ago. The messages reveal profound philosophical insights, reshaping humanity's understanding of existence. As researchers delve deeper, they uncover a hidden truth: the universe itself is a conscious entity, communicating through these artifacts. This revelation sparks a new era of enlightenment, uniting humanity in a quest to comprehend the cosmic mind. The artifacts, though scattered, seem to form a network that resonates with the collective consciousness of humanity. Each artifact holds a piece of a grand puzzle, and as more are discovered, the picture becomes clearer. The messages speak of balance, harmony, and the interconnectedness of all things. They emphasize the importance of preserving nature and living in harmony with the environment. This newfound knowledge leads to significant advancements in technology and medicine, improving the quality of life for all. However, it also brings challenges, as some factions seek to exploit the artifacts for personal gain. The struggle between those who wish to protect the artifacts and those who wish to exploit them becomes a defining conflict of the era. Ultimately, the protectors prevail, ensuring that the wisdom of the ancient civilization is used for the betterment of all. The artifacts continue to guide humanity, their signals growing stronger as more are discovered. The journey to understand the cosmic mind becomes a never-ending quest, driving humanity to explore the farthest reaches of the universe.
+      </p>
+    </div>
+  
+    <div id="texto2" class="content">
+      <p>
+        In a parallel universe, the gods of ancient mythologies are not mere legends but quantum entities, existing in a state of superposition. These quantum gods can manifest in various forms, influencing the fabric of reality. A group of scientists develops a device to communicate with these entities, seeking their aid to solve humanity's greatest challenges. However, their interactions with the quantum gods have unintended consequences, altering the timeline and creating paradoxes. The scientists must navigate these temporal shifts, learning to coexist with the enigmatic beings that shape their reality. The device, known as the Quantum Communicator, allows the scientists to interact with the gods in a controlled environment. They learn that the gods are not omnipotent but rather powerful beings with their own agendas and limitations. The scientists form alliances with some gods while avoiding others, creating a complex web of allegiances and rivalries. As they delve deeper into the quantum realm, they discover that the gods are locked in a eternal struggle for dominance. This struggle has ripple effects in the human world, manifesting as natural disasters, political upheavals, and technological advancements. The scientists realize that they must find a way to stabilize the quantum realm to prevent further chaos in their own world. They work tirelessly, using their knowledge of quantum physics and the wisdom gained from their interactions with the gods. Eventually, they develop a solution: a device that can stabilize the quantum realm and prevent the gods from interfering with the human world. However, this solution comes at a great cost, as it requires the scientists to sacrifice their own existence in the quantum realm. They make the ultimate sacrifice, ensuring the stability of both realms and the safety of humanity.
+      </p>
+    </div>
+  
+    <div id="texto3" class="content">
+      <p>
+        A lone astronaut, stranded on a distant planet, discovers an ancient temple hidden beneath the surface. Inside, she finds murals depicting constellations that match those from Earth, but with a twist: each star is connected to a mythological figure. As she explores further, the astronaut uncovers a device that projects holographic representations of these myths, revealing that the stars themselves are sentient beings. These stellar entities share their knowledge with the astronaut, granting her the power to traverse the cosmos and unite the scattered remnants of humanity. The astronaut, named Aria, learns that the temple is a gateway to other worlds, each inhabited by different sentient stars. She travels from world to world, meeting various stellar entities and learning their stories. Each star has a unique perspective on the universe, shaped by their experiences and the myths that surround them. Aria discovers that the stars are not just celestial bodies but living beings with emotions, memories, and dreams. They have witnessed the rise and fall of civilizations, the birth and death of planets, and the endless cycle of creation and destruction. Aria's journey takes her to the edges of the universe, where she encounters the oldest and wisest of the stellar entities. They reveal to her the true nature of the cosmos and her role in it. She learns that she is not just an astronaut but a cosmic traveler, destined to unite the scattered remnants of humanity and restore balance to the universe. With her newfound knowledge and the power granted by the stellar entities, Aria returns to Earth, determined to fulfill her destiny. She shares her experiences with the world, inspiring a new generation of explorers and thinkers. Together, they work towards a future where humanity and the cosmos coexist in harmony, guided by the wisdom of the stars.
+      </p>
+    </div>
+  
+    <div id="texto4" class="content">
+      <p>
+        In the far reaches of the galaxy, a group of explorers stumbles upon a planet inhabited by beings resembling Norse gods. These entities possess advanced technology, harnessing the power of the stars to maintain their immortality. The explorers form an alliance with the Norse gods, learning their secrets and adopting their ways. Together, they embark on a quest to restore balance to the cosmos, facing challenges that test their newfound powers and forging a bond that transcends time and space. The planet, named Asgard, is a marvel of technology and magic, where the Norse gods live in harmony with nature. The explorers, led by a charismatic captain named Erik, are welcomed by the gods and given a tour of their magnificent realm. They learn that the gods have been watching over humanity from afar, guiding them through trials and tribulations. The gods reveal that a great threat looms over the cosmos, a force that seeks to consume all life and plunge the universe into eternal darkness. They offer their aid to the explorers, but only if they prove themselves worthy. Erik and his crew undergo a series of trials, each testing their courage, wisdom, and strength. They face mythical beasts, solve ancient riddles, and navigate treacherous landscapes. With each trial, they grow stronger and more united, earning the respect and admiration of the gods. Finally, they face the ultimate challenge: a battle against the embodiment of the cosmic threat. With the gods by their side, the explorers fight valiantly, their newfound powers shining brightly in the face of darkness. In the end, they emerge victorious, the threat vanquished and the cosmos saved. The gods praise their bravery and grant them the power to traverse the stars, charging them with the responsibility of maintaining balance in the universe. Erik and his crew return to their ship, forever changed by their experiences on Asgard. They continue their journey, guided by the wisdom of the gods and the light of the stars, ready to face whatever challenges the cosmos throws their way.
+      </p>
+    </div>
+  
+    <div id="texto5" class="content">
+      <p>
+        Deep within the Amazon rainforest, a portal opens, revealing a void that leads to an alternate dimension. Indigenous tribes, guided by ancient prophecies, venture into the void, discovering a realm where the laws of physics are bent to the will of its inhabitants. They encounter entities that embody the spirits of the forest, teaching them the secrets of the cosmos. The tribes return to Earth, sharing their newfound knowledge and ushering in an era of harmony between humanity and nature. The portal, known as the Gateway to the Void, has been the subject of legends and folktales for generations. The indigenous tribes have long known of its existence, passed down through oral traditions and ancient texts. When the portal finally opens, the tribes are ready, their bravest warriors and wisest elders stepping through to face the unknown. The void is a place of wonder and terror, where the laws of nature are fluid and ever-changing. The tribes encounter entities that defy description, beings of pure energy and thought that communicate through visions and emotions. These entities, known as the Forest Spirits, reveal to the tribes the true nature of the cosmos. They explain that the universe is a living, breathing entity, connected by an intricate web of energy and consciousness. The tribes learn that humanity has a vital role to play in maintaining the balance of this cosmic web, that their actions have consequences that ripple throughout the universe. Armed with this newfound knowledge, the tribes return to Earth, determined to share their experiences with the world. They travel from village to village, city to city, spreading their message of harmony and balance. Their words resonate with people from all walks of life, inspiring a global movement to protect the environment and live in harmony with nature. Governments and corporations take notice, implementing policies and practices that prioritize sustainability and conservation. The world begins to heal, the scars of industry and pollution fading as humanity embraces its role as stewards of the planet. The indigenous tribes continue to guide and inspire, their wisdom and courage a beacon of hope in a changing world.
+      </p>
+    </div>
+  </article>
+  
+  
+
+
+  <!-- Caixa de mensagem para tradução -->
+  <div id="translationBox"></div>
+
+  <script>
+    // Elementos da página
+    const indexItems = document.querySelectorAll('.index-list li');
+    const indexList = document.getElementById('indexList');
+    const mainTitle = document.getElementById('mainTitle');
+    const backButton = document.getElementById('backButton');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const translationBox = document.getElementById('translationBox');
+  
+    // Variáveis globais atualizadas
+    let currentUtterance = null;
+    let pausedAtChar = 0; // Salva o último caractere lido
+    let fullText = "";
+    let translationTimeout = null;
+  
+    // Função de tradução com cache e nova API
+    function translateWord(word) {
+      const cleanWord = word.replace(/[^a-zA-ZÀ-ÿ'-]/g, '');
+      if (!cleanWord) return;
+  
+      if (translationTimeout) clearTimeout(translationTimeout);
+  
+      const cached = localStorage.getItem(`trans_${cleanWord}`);
+      if (cached) {
+        showTranslationMessage(`"${cleanWord}": ${cached}`);
+        return;
+      }
+  
+      fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(cleanWord)}&langpair=en|pt`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.responseData?.translatedText) {
+            localStorage.setItem(`trans_${cleanWord}`, data.responseData.translatedText);
+            showTranslationMessage(`"${cleanWord}": ${data.responseData.translatedText}`);
+          } else {
+            showTranslationMessage(`Tradução não encontrada para "${cleanWord}"`);
+          }
+        })
+        .catch(error => {
+          showTranslationMessage(`Erro na tradução: ${error.message}`);
+        });
+    }
+  
+    // Exibe a mensagem de tradução
+    function showTranslationMessage(message) {
+      translationBox.textContent = message;
+      translationBox.style.display = 'block';
+      translationTimeout = setTimeout(() => {
+        translationBox.style.display = 'none';
+      }, 5000);
+    }
+  
+    // Torna as palavras clicáveis
+    function makeWordsClickable() {
+      const activeContent = document.querySelector('.content.active');
+      if (!activeContent) return;
+  
+      activeContent.querySelectorAll('p').forEach(paragraph => {
+        if (!paragraph.classList.contains('processed')) {
+          paragraph.innerHTML = paragraph.textContent.split(/(\s+)/).map(word => {
+            return /\s+/.test(word)
+              ? word
+              : `<span class="clickable-word" style="cursor:pointer">${word}</span>`;
+          }).join('');
+          paragraph.classList.add('processed');
+        }
+      });
+  
+      activeContent.querySelectorAll('.clickable-word').forEach(span => {
+        span.addEventListener('click', (event) => {
+          event.stopPropagation();
+          translateWord(span.textContent);
+        });
+      });
+    }
+  
+    // Evento de navegação
+    indexItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const targetId = item.getAttribute('data-target');
+        const contentEl = document.getElementById(targetId);
+        pausedAtChar = 0;
+        speechSynthesis.cancel();
+  
+        indexList.style.display = 'none';
+        mainTitle.style.display = 'none';
+  
+        document.querySelectorAll('.content').forEach(el => {
+          el.classList.remove('active');
+          el.querySelectorAll('p').forEach(p => p.classList.remove('processed'));
+        });
+  
+        contentEl.classList.add('active');
+        backButton.style.display = 'inline-block';
+  
+        makeWordsClickable();
+      });
+    });
+  
+    // Voltar ao menu
+    backButton.addEventListener('click', () => {
+      speechSynthesis.cancel();
+      pausedAtChar = 0;
+  
+      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+      indexList.style.display = 'block';
+      mainTitle.style.display = 'block';
+      backButton.style.display = 'none';
+    });
+  
+
+  </script>
+</body>  
+</html>
